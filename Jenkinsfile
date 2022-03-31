@@ -2,10 +2,13 @@ pipeline {
     agent any
     stages {
         stage('Checkout') {
+            when {
+                expression {
+                    return env.BRANCH_NAME == 'main';
+                }
+            }
             steps {
                 script {
-                    echo 'Im outside if condition'
-                    if (env.BRANCH_NAME == 'main') {
                         echo 'I only execute on the main branch'
 //                         checkout([
 //                             $class: 'GitSCM',
