@@ -21,7 +21,7 @@ pipeline {
         stage('Build') { 
             steps {
                 sh 'printenv'
-                sh 'echo Helloooo'
+                sh 'echo Hiiii'
             }
         }
     }
