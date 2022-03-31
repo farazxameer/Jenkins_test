@@ -19,6 +19,21 @@ pipeline {
                 }
             }
         }
+        stage('Test 1') {
+            when {
+                anyOf {
+                    changeset "test2/**"
+                    expression {  
+                        sh(returnStatus: true, script: 'git diff  origin/main --name-only | grep --quiet "^test2/*"') == 0
+                    }
+                }
+            }
+            steps {
+                script {                    
+                    echo "Changes in test2 directory"
+                }
+            }
+        }
         stage('Build') { 
             steps {
                 sh 'printenv'
