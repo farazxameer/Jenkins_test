@@ -16,7 +16,6 @@ pipeline {
 //                             extensions: [[$class: 'ChangelogToBranch', options: [compareRemote: 'origin', compareTarget: 'main']]],
 //                             userRemoteConfigs: [[name: 'origin', url: 'https://github.com/farazxameer/Jenkins_test']]
 //                         ])
-                    }
                 }
             }
         }
