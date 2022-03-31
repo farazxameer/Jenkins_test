@@ -1,12 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
+        stage('Test 1') {
             when {
                 anyOf {
                     changeset "test1/**"
                     expression {  
-                        sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^test1/*"') == 0
+                        sh(returnStatus: true, script: 'git diff  origin/main --name-only | grep --quiet "^test1/*"') == 0
                     }
                 }
 //                 expression {
