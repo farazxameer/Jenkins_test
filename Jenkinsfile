@@ -19,7 +19,7 @@ pipeline {
                 }
             }
         }
-        stage('Test 1') {
+        stage('Test 2') {
             when {
                 anyOf {
                     changeset "test2/**"
