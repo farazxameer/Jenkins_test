@@ -3,18 +3,19 @@ pipeline {
     stages {
         stage('Checkout') {
             when {
-                expression {
-                    return env.GIT_LOCAL_BRANCH != 'main';
+                anyOf {
+                    changeset "test1/**"
+                    expression {  
+                        sh(returnStatus: true, script: 'git diff  origin/master --name-only | grep --quiet "^test1/*"') == 0
+                    }
                 }
+//                 expression {
+//                     return env.GIT_LOCAL_BRANCH != 'main';
+//                 }
             }
             steps {
                 script {                    
-                    checkout([
-                        $class: 'GitSCM',
-                        branches: [[name: '*/**']],
-                        extensions: [[$class: 'ChangelogToBranch', options: [compareRemote: 'origin', compareTarget: 'main']]],
-                        userRemoteConfigs: [[name: 'origin', url: 'https://github.com/farazxameer/Jenkins_test']]
-                    ])
+                    echo "Changes in test1 directory"
                 }
             }
         }
