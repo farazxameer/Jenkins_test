@@ -4,6 +4,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
+                    echo 'Im outside if condition'
                     if (env.BRANCH_NAME == 'main') {
                         echo 'I only execute on the main branch'
 //                         checkout([
