@@ -4,7 +4,7 @@ pipeline {
         stage('Checkout') {
             when {
                 expression {
-                    return env.BRANCH_NAME == 'main';
+                    return env.GIT_LOCAL_BRANCH == 'main';
                 }
             }
             steps {
